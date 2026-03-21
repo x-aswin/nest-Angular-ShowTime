@@ -1,0 +1,47 @@
+  
+  @if (loading) {
+     <div class="text-center py-5">
+      <div class="spinner-border text-light" role="status"></div>
+    </div>
+  } @else {
+    
+  <div *ngIf="moviescarousel.length > 0" id="movieHeroCarousel" class="carousel slide">
+    
+    <div class="carousel-indicators">
+      <button *ngFor="let movie of moviescarousel; let i = index" 
+              type="button" 
+              data-bs-target="#movieHeroCarousel" 
+              [attr.data-bs-slide-to]="i" 
+              [class.active]="i === 0">
+      </button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let movie of moviescarousel; let i = index" [class.active]="i === 0">
+        <div class="overlay"></div>
+        <img [src]="movie.backdrop_path" class="d-block w-100 carousel-img" [alt]="movie.original_title">
+        <div class="carousel-caption d-none d-md-block text-start">
+          <h1 class="display-3 fw-bold">{{ movie.original_title }}</h1>
+          <p class="lead w-50 text-truncate">{{ movie.overview }}</p>
+          <button class="btn btn-primary btn-lg mt-3" [routerLink]="['/movie', movie.id]">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieHeroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieHeroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+
+  }
+
+
+  <div class="container my-5" *ngIf="movies.length > 0">
+    <div class="row g-4">
+      </div>
+  </div>

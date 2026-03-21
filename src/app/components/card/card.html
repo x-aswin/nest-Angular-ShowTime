@@ -1,0 +1,16 @@
+<div class="movie-card " [routerLink]="['/movies', movie.id]">
+  <div class="movie-poster">
+    <img [src]="movie.poster_path" [alt]="movie.original_title">
+    <div class="movie-overlay">
+      <p class="overview-text">{{ movie.overview }}</p>
+      <a routerLink=""><span class="btn-detail">View Details →</span></a>
+    </div>
+  </div>
+  <div class="movie-info">
+    <h6 class="movie-title">{{ movie.original_title }}</h6>
+    <div class="movie-meta">
+      <span class="language">{{ movie.original_language}}</span>
+      <span class="rating">⭐ {{ movie.vote_average }}</span>
+    </div>
+  </div>
+</div>
