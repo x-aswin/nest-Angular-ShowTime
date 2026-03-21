@@ -1,0 +1,21 @@
+.dark-card {
+  background-color: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark-input {
+  background-color: #0f0f1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.dark-input:focus {
+  background-color: #0f0f1a;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  box-shadow: none;
+}
+
+.dark-input::placeholder {
+  color: #555;
+}
