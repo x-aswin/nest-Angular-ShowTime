@@ -3,7 +3,7 @@
     <img [src]="movie.poster_path" [alt]="movie.original_title">
     <div class="movie-overlay">
       <p class="overview-text">{{ movie.overview }}</p>
-      <a routerLink=""><span class="btn-detail">View Details →</span></a>
+      <a (click)="goToDetail()"><span class="btn-detail">View Details →</span></a>
     </div>
   </div>
   <div class="movie-info">
