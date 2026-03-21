@@ -23,7 +23,7 @@
         <div class="carousel-caption d-none d-md-block text-start">
           <h1 class="display-3 fw-bold">{{ movie.original_title }}</h1>
           <p class="lead w-50 text-truncate">{{ movie.overview }}</p>
-          <button class="btn btn-primary btn-lg mt-3" [routerLink]="['/movie', movie.id]">View Details</button>
+          <a (click)="goToDetail(movie)"><button class="btn btn-primary btn-lg mt-3" >View Details</button></a>
         </div>
       </div>
     </div>

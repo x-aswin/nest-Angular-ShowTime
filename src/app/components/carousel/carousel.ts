@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Apiservice } from '../../services/apiservice';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 declare var bootstrap: any;
 
@@ -16,7 +16,7 @@ export class Carousel {
   moviescarousel: any[] = [];
   loading= true;
 
-  constructor(private api: Apiservice, private cdr: ChangeDetectorRef) {}
+  constructor(private api: Apiservice, private cdr: ChangeDetectorRef, private router:Router) {}
 
   ngOnInit() {
     this.api.getMovies().subscribe((res: any) => {
@@ -33,4 +33,12 @@ export class Carousel {
       }, 0);
     });
   }
+
+  goToDetail(movie:any) {
+    this.router.navigate(['/movie', movie.id], {
+      state: { movie: movie }
+    });
+  }
+
+
 }

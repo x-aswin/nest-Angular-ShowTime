@@ -1,70 +1,75 @@
-<div *ngIf="movie" class="movie-detail">
+@if (movie) {
+  <div class="movie-detail">
 
-  <!-- Backdrop -->
-  <div class="backdrop-wrapper">
-    <img [src]="movie.backdrop_path" [alt]="movie.original_title" class="backdrop-img">
-    <div class="backdrop-overlay"></div>
-    <div class="backdrop-content container">
-      <h1 class="movie-main-title">{{ movie.original_title }}</h1>
-      <div class="badges">
-        <span class="badge-pill yellow">⭐ {{ movie.vote_average }} / 10</span>
-        <span class="badge-pill gray">{{ movie.vote_count }} votes</span>
-        <span class="badge-pill gray">{{ movie.original_language | uppercase }}</span>
-        <span class="badge-pill gray">🔥 {{ movie.popularity | number:'1.0-0' }}</span>
-        <span *ngIf="movie.adult" class="badge-pill red">18+</span>
+    <!-- Backdrop -->
+    <div class="backdrop-wrapper">
+      <img [src]="movie.backdrop_path" [alt]="movie.original_title" class="backdrop-img">
+      <div class="backdrop-overlay"></div>
+      <div class="backdrop-content container">
+        <h1 class="movie-main-title">{{ movie.original_title }}</h1>
+        <div class="badges">
+          <span class="badge-pill yellow">⭐ {{ movie.vote_average }} / 10</span>
+          <span class="badge-pill gray">{{ movie.vote_count }} votes</span>
+          <span class="badge-pill gray">{{ movie.original_language }}</span>
+          <span class="badge-pill gray">🔥 {{ movie.popularity }}</span>
+          @if (movie.adult) {
+            <span class="badge-pill red">18+</span>
+          }
+        </div>
       </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+      <div class="row g-4">
+
+        <div class="col-md-3">
+          <img [src]="movie.poster_path" [alt]="movie.original_title" class="poster-img">
+        </div>
+
+        <div class="col-md-9">
+          <div class="info-row">
+            <span class="info-label">Released</span>
+            <span class="info-value">{{ movie.release_date }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Language</span>
+            <span class="info-value">{{ movie.original_language }}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Popularity</span>
+            <span class="info-value">{{ movie.popularity}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Vote count</span>
+            <span class="info-value">{{ movie.vote_count }}</span>
+          </div>
+          <h4 class="section-title mt-4">Overview</h4>
+          <p class="overview">{{ movie.overview }}</p>
+        </div>
+
+      </div>
+
+      <!-- Cast -->
+      @if (movie.casts?.length > 0) {
+        <div class="cast-section">
+          <h4 class="section-title">Cast</h4>
+          <div class="cast-grid">
+            @for (cast of movie.casts; track cast.id) {
+              <div class="cast-card">
+                <img
+                  [src]="cast.profile_path"
+                  [alt]="cast.name"
+                  class="cast-img"
+                  onerror="this.src='https://placehold.co/100x100?text=?'">
+                <p class="cast-name">{{ cast.name }}</p>
+                <p class="cast-character">{{ cast.character }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
     </div>
   </div>
-
-  <!-- Main Content -->
-  <div class="container main-content">
-    <div class="row g-4">
-
-      <!-- Poster -->
-      <div class="col-md-3">
-        <img [src]="movie.poster_path" [alt]="movie.original_title" class="poster-img">
-      </div>
-
-      <!-- Info -->
-      <div class="col-md-9">
-        <div class="info-row">
-          <span class="info-label">Released</span>
-          <span class="info-value">{{ movie.release_date }}</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Language</span>
-          <span class="info-value">{{ movie.original_language | uppercase }}</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Popularity</span>
-          <span class="info-value">{{ movie.popularity | number:'1.0-0' }}</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Vote count</span>
-          <span class="info-value">{{ movie.vote_count }}</span>
-        </div>
-
-        <h4 class="section-title mt-4">Overview</h4>
-        <p class="overview">{{ movie.overview }}</p>
-      </div>
-
-    </div>
-
-    <!-- Cast -->
-    <div *ngIf="movie.casts?.length > 0" class="cast-section">
-      <h4 class="section-title">Cast</h4>
-      <div class="cast-grid">
-        <div class="cast-card" *ngFor="let cast of movie.casts">
-          <img
-            [src]="cast.profile_path"
-            [alt]="cast.name"
-            class="cast-img"
-            onerror="this.src='https://placehold.co/100x100?text=?'">
-          <p class="cast-name">{{ cast.name }}</p>
-          <p class="cast-character">{{ cast.character }}</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+}

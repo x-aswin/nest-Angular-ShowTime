@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-moviedetails',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './moviedetails.html',
   styleUrl: './moviedetails.css',
 })
