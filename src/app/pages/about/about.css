@@ -3,6 +3,20 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.contact-hero-card {
+  background: linear-gradient(145deg, #1a1a2e 0%, #151524 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-kicker {
+  display: inline-block;
+  color: #f5c518;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
 .dark-input {
   background-color: #0f0f1a;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -22,4 +36,10 @@
 
 .text-muted {
   color: #aaaaaa !important;
+}
+
+@media (max-width: 575.98px) {
+  .contact-hero-card {
+    padding: 1.25rem !important;
+  }
 }
