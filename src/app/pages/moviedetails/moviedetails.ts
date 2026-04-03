@@ -34,6 +34,7 @@ type MovieDetails = {
 export class Moviedetails {
   movie: MovieDetails | null = null;
 
+  loading = true;
   private readonly fallbackCastImage =
     'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2272%22 height=%2272%22 viewBox=%220 0 72 72%22%3E%3Crect width=%2272%22 height=%2272%22 fill=%22%23222634%22/%3E%3Ccircle cx=%2236%22 cy=%2227%22 r=%2212%22 fill=%22%23586777%22/%3E%3Crect x=%2220%22 y=%2244%22 width=%2232%22 height=%2216%22 rx=%228%22 fill=%22%23586777%22/%3E%3C/svg%3E';
 
@@ -45,7 +46,10 @@ export class Moviedetails {
 
   ngOnInit() {
     // Try to get from navigation state first
+  
     this.movie = (history.state?.movie as MovieDetails | undefined) ?? null;
+    if (this.movie) this.loading = false;
+
 
     // If no movie in state, fetch from API (page was refreshed)
     if (!this.movie) {
@@ -63,6 +67,7 @@ export class Moviedetails {
                   //console.log('Fallback movie:', this.movie);
                   }
             this.cdr.markForCheck();
+            this.loading = false;
         });
         }
       });

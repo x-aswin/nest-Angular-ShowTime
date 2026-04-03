@@ -16,5 +16,9 @@ export const routes: Routes = [
     },
     {
         path: 'movie/:id', component: Moviedetails
-    }
+    },
+    {
+        path: 'movie', redirectTo: 'explore', pathMatch: 'full'
+    },
+    { path: '**', redirectTo: '' }
 ];
