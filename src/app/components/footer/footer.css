@@ -1,0 +1,19 @@
+.site-footer {
+	background: linear-gradient(180deg, #1a1a2e 0%, #151524 100%);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	color: #d9deea;
+}
+
+.footer-link {
+	color: #c5cad7;
+	transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+	color: #f5c518;
+}
+
+.footer-copy {
+	color: #a4adbf;
+	font-size: 0.8rem;
+}
