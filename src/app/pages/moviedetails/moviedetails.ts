@@ -58,9 +58,9 @@ export class Moviedetails {
                 //console.log('API response received:', reponse);
                 this.movie = reponse.data.find((m :any) => m.id === movieId) ?? null;
                 if(!this.movie){
-                  //console.warn(`Movie with id ${movieId} not found in API response. Using first movie as fallback.`);
+                  console.warn(`Movie with id ${movieId} not found in API response. Using first movie as fallback.`);
                   this.movie=reponse.data[0];
-                  console.log('Fallback movie:', this.movie);
+                  //console.log('Fallback movie:', this.movie);
                   }
             this.cdr.markForCheck();
         });
