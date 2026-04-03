@@ -46,7 +46,6 @@ export class Moviedetails {
 
   ngOnInit() {
     // Try to get from navigation state first
-  
     this.movie = (history.state?.movie as MovieDetails | undefined) ?? null;
     if (this.movie) this.loading = false;
 
