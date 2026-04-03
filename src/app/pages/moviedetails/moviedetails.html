@@ -3,7 +3,7 @@
 
     <!-- Backdrop -->
     <div class="backdrop-wrapper">
-      <img [src]="movie.backdrop_path" [alt]="movie.original_title" class="backdrop-img">
+      <img [src]="movie.backdrop_path" [alt]="movie.original_title" class="backdrop-img" fetchpriority="high" decoding="async">
       <div class="backdrop-overlay"></div>
       <div class="backdrop-content container">
         <h1 class="movie-main-title">{{ movie.original_title }}</h1>
@@ -24,7 +24,7 @@
       <div class="row g-4">
 
         <div class="col-md-3">
-          <img [src]="movie.poster_path" [alt]="movie.original_title" class="poster-img">
+          <img [src]="movie.poster_path" [alt]="movie.original_title" class="poster-img" loading="lazy" decoding="async">
         </div>
 
         <div class="col-md-9">
@@ -51,17 +51,19 @@
       </div>
 
       <!-- Cast -->
-      @if (movie.casts?.length > 0) {
+      @if (visibleCasts.length > 0) {
         <div class="cast-section">
           <h4 class="section-title">Cast</h4>
           <div class="cast-grid">
-            @for (cast of movie.casts; track cast.id) {
+            @for (cast of visibleCasts; track cast.id ?? cast.name) {
               <div class="cast-card">
                 <img
                   [src]="cast.profile_path"
                   [alt]="cast.name"
                   class="cast-img"
-                  onerror="this.src='https://placehold.co/100x100?text=?'">
+                  loading="lazy"
+                  decoding="async"
+                  (error)="onCastImageError($event)">
                 <p class="cast-name">{{ cast.name }}</p>
                 <p class="cast-character">{{ cast.character }}</p>
               </div>

@@ -17,5 +17,9 @@
 }
 
 .dark-input::placeholder {
-  color: #555;
+  color: #9aa0ac;
+}
+
+.text-muted {
+  color: #aaaaaa !important;
 }
