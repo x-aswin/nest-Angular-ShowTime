@@ -1,0 +1,73 @@
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 1030;
+	backdrop-filter: blur(8px);
+}
+
+.header-shell {
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+	min-height: 66px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: linear-gradient(135deg, rgba(20, 20, 35, 0.92), rgba(18, 18, 28, 0.85));
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.brand-link {
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	letter-spacing: 0.01em;
+}
+
+.brand-link:hover {
+	color: #f5c518;
+}
+
+.brand-icon {
+	font-size: 1.2rem;
+	line-height: 1;
+}
+
+.routerlink {
+	color: #c5cad7;
+	font-weight: 500;
+	border-radius: 999px;
+	padding: 0.42rem 0.9rem;
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.routerlink:hover {
+	color: #ffffff;
+	background-color: rgba(255, 255, 255, 0.08);
+}
+
+.routerlink.is-active {
+	color: #0f1118;
+	background-color: #f3ce49;
+}
+
+.explore-btn {
+	border-radius: 999px;
+	font-weight: 600;
+	padding-inline: 0.95rem;
+}
+
+@media (max-width: 767.98px) {
+	.header-shell {
+		border-radius: 20px;
+		min-height: 72px;
+		padding-top: 0.6rem;
+		padding-bottom: 0.6rem;
+	}
+
+	.navbar-nav {
+		width: 100%;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+	}
+}
